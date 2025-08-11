@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TastyBite - Authentic Indian Cuisine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <nav class="nav">
+          <div class="logo">
+            <span class="logo-text">TastyBite</span>
+            <span class="logo-icon">🍽️</span>
+          </div>
+
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="./pages/menu1.html">Menu</a></li>
+            <li><a href="./pages/about.html">About</a></li>
+            <li><a href="./pages/contact.html">Contact</a></li>
+            <li><a href="./pages/login.html">Login</a></li>
+          </ul>
+
+          <div class="cart-section">
+            <button class="cart-btn">
+              🛒
+              <span class="cart-count">3</span>
+            </button>
+            <button class="menu-btn">☰</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Experience Authentic Indian Flavors</h1>
+        <p>
+          From North to South, East to West - A Journey Through India's Culinary
+          Heritage
+        </p>
+        <button class="btn">Explore Menu</button>
+      </div>
+    </section>
+
+    <!-- Regional Categories -->
+    <section class="section section-gray">
+      <div class="container">
+        <div class="section-title">
+          <h2>Regional Specialties</h2>
+          <p>Discover the diverse flavors from different regions of India</p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-image">
+              <img
+                src="https://readdy.ai/api/search-image?query=butter%20chicken%20curry%20with%20naan%20bread%20traditional%20North%20Indian%20cuisine%20rich%20creamy%20texture%20golden%20color%20food%20photography%20studio%20lighting&width=200&height=200&seq=north1&orientation=squarish"
+                alt="North Indian"
+              />
+            </div>
+            <h3>North Indian</h3>
+            <p>Butter Chicken, Naan, Tandoori</p>
+            <span
+              class="tag tag-red"
+              id="open-healthy-modal"
+              class="trigger-button"
+              >Rich & Creamy</span
+            >
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img
+                src="https://readdy.ai/api/search-image?query=crispy%20dosa%20with%20coconut%20chutney%20and%20sambar%20traditional%20South%20Indian%20breakfast%20banana%20leaf%20presentation%20authentic%20food%20photography&width=200&height=200&seq=south1&orientation=squarish"
+                alt="South Indian"
+              />
+            </div>
+            <h3>South Indian</h3>
+            <p>Dosa, Idli, Sambar</p>
+            <span
+              class="tag tag-green"
+              id="open-healthy-modal"
+              class="trigger-button"
+              >Light & Healthy</span
+            >
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img
+                src="https://readdy.ai/api/search-image?query=Bengali%20fish%20curry%20with%20rice%20traditional%20Bengali%20cuisine%20mustard%20oil%20golden%20turmeric%20color%20authentic%20food%20photography&width=200&height=200&seq=bengali1&orientation=squarish"
+                alt="Bengali"
+              />
+            </div>
+            <h3>Bengali</h3>
+            <p>Fish Curry, Rasgulla, Mishti</p>
+            <span
+              class="tag tag-blue"
+              id="open-healthy-modal"
+              class="trigger-button"
+              >Sweet & Savory</span
+            >
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img
+                src="https://readdy.ai/api/search-image?query=Gujarati%20thali%20with%20dhokla%20khandvi%20and%20various%20vegetarian%20dishes%20traditional%20brass%20plates%20authentic%20presentation%20food%20photography&width=200&height=200&seq=gujarati1&orientation=squarish"
+                alt="Gujarati"
+              />
+            </div>
+            <h3>Gujarati</h3>
+            <p>Thali, Dhokla, Khandvi</p>
+            <span
+              class="tag tag-yellow"
+              id="open-healthy-modal"
+              class="trigger-button"
+              >Pure Vegetarian</span
+            >
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img
+                src="https://readdy.ai/api/search-image?query=chole%20bhature%20with%20pickles%20and%20onions%20traditional%20Punjabi%20cuisine%20fluffy%20bread%20chickpea%20curry%20authentic%20food%20photography&width=200&height=200&seq=punjabi1&orientation=squarish"
+                alt="Punjabi"
+              />
+            </div>
+            <h3>Punjabi</h3>
+            <p>Chole Bhature, Sarson ka Saag</p>
+            <span
+              class="tag tag-orange"
+              id="open-healthy-modal"
+              class="trigger-button"
+              >Hearty & Bold</span
+            >
+          </div>
+
+          <div class="card">
+            <div class="card-image">
+              <img
+                src="https://readdy.ai/api/search-image?query=Hyderabadi%20biryani%20with%20boiled%20egg%20and%20raita%20traditional%20dum%20cooking%20method%20aromatic%20basmati%20rice%20authentic%20food%20photography&width=200&height=200&seq=hyderabadi1&orientation=squarish"
+                alt="Hyderabadi"
+              />
+            </div>
+            <h3>Hyderabadi</h3>
+            <p>Biryani, Haleem, Kebabs</p>
+            <span
+              class="tag tag-purple"
+              id="open-healthy-modal"
+              class="trigger-button"
+              >Royal & Aromatic</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Dishes -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Today's Special Thali</h2>
+          <p>Handpicked traditional dishes prepared with authentic recipes</p>
+        </div>
+
+        <div class="dishes-scroll">
+          <div class="dish-card">
+            <div class="dish-image">
+              <img
+                src="https://readdy.ai/api/search-image?query=premium%20Indian%20thali%20with%20multiple%20curries%20dal%20rice%20roti%20papad%20pickle%20traditional%20brass%20plate%20complete%20meal%20authentic%20food%20photography&width=400&height=240&seq=thali1&orientation=landscape"
+                alt="Premium Thali"
+              />
+            </div>
+            <div class="dish-content">
+              <h3>Royal Maharaja Thali</h3>
+              <p>
+                Complete meal with 6 curries, dal, rice, roti, papad & dessert
+              </p>
+              <div class="spice-level">
+                <div class="spice-dots">
+                  <div class="spice-dot active-green"></div>
+                  <div class="spice-dot active-yellow"></div>
+                  <div class="spice-dot"></div>
+                </div>
+                <span>Medium Spice</span>
+              </div>
+              <div class="dish-footer">
+                <span class="price">₹299</span>
+                <button class="btn-small">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-card">
+            <div class="dish-image">
+              <img
+                src="https://readdy.ai/api/search-image?query=royal%20chicken%20biryani%20with%20boiled%20egg%20raita%20and%20shorba%20aromatic%20basmati%20rice%20saffron%20garnish%20traditional%20presentation%20food%20photography&width=400&height=240&seq=biryani1&orientation=landscape"
+                alt="Royal Biryani"
+              />
+            </div>
+            <div class="dish-content">
+              <h3>Hyderabadi Dum Biryani</h3>
+              <p>
+                Aromatic basmati rice with tender chicken, served with raita
+              </p>
+              <div class="spice-level">
+                <div class="spice-dots">
+                  <div class="spice-dot active-green"></div>
+                  <div class="spice-dot active-yellow"></div>
+                  <div class="spice-dot active-red"></div>
+                </div>
+                <span>Spicy</span>
+              </div>
+              <div class="dish-footer">
+                <span class="price">₹249</span>
+                <button class="btn-small">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-card">
+            <div class="dish-image">
+              <img
+                src="https://readdy.ai/api/search-image?query=traditional%20Indian%20curry%20with%20naan%20bread%20rich%20gravy%20authentic%20spices%20garnished%20with%20cilantro%20traditional%20serving%20bowl%20food%20photography&width=400&height=240&seq=curry1&orientation=landscape"
+                alt="Traditional Curry"
+              />
+            </div>
+            <div class="dish-content">
+              <h3>Butter Chicken Combo</h3>
+              <p>Creamy tomato-based curry with butter naan and basmati rice</p>
+              <div class="spice-level">
+                <div class="spice-dots">
+                  <div class="spice-dot active-green"></div>
+                  <div class="spice-dot"></div>
+                  <div class="spice-dot"></div>
+                </div>
+                <span>Mild</span>
+              </div>
+              <div class="dish-footer">
+                <span class="price">₹199</span>
+                <button class="btn-small">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-card">
+            <div class="dish-image">
+              <img
+                src="https://readdy.ai/api/search-image?query=assorted%20Indian%20breads%20naan%20roti%20paratha%20freshly%20baked%20tandoor%20bread%20basket%20traditional%20presentation%20food%20photography&width=400&height=240&seq=bread1&orientation=landscape"
+                alt="Fresh Breads"
+              />
+            </div>
+            <div class="dish-content">
+              <h3>Tandoori Bread Basket</h3>
+              <p>Assorted fresh breads - naan, roti, paratha with ghee</p>
+              <div class="vegetarian">
+                <span class="vegetarian-icon">🌱</span>
+                <span>Vegetarian</span>
+              </div>
+              <div class="dish-footer">
+                <span class="price">₹149</span>
+                <button class="btn-small">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  Special Features -->
+    <section class="section section-secondary">
+      <div class="container">
+        <div class="section-title">
+          <h2>Why Choose TastyBite?</h2>
+          <p>
+            Experience the authentic taste of India with our special features
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon icon-red">🔥</div>
+            <h3>Tandoor Specialties</h3>
+            <p>
+              Authentic clay oven cooking for that perfect smoky flavor in every
+              bite
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon icon-orange">🌶️</div>
+            <h3>Custom Spice Level</h3>
+            <p>
+              Choose your preferred spice level from mild to extra hot for every
+              dish
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon icon-green">🌱</div>
+            <h3>Fresh Ingredients</h3>
+            <p>
+              Daily fresh vegetables and premium spices sourced directly from
+              India
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon icon-blue">👁️</div>
+            <h3>Live Dosa Counter</h3>
+            <p>
+              Watch our chefs prepare fresh dosas and other specialties right
+              before your eyes
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon icon-purple">❤️</div>
+            <h3>Dietary Preferences</h3>
+            <p>
+              Vegetarian, vegan, Jain, and gluten-free options available for all
+              dishes
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon icon-yellow">🎁</div>
+            <h3>Festival Specials</h3>
+            <p>
+              Special festival menus and traditional sweets during Indian
+              celebrations
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Restaurant Info -->
+          <div class="footer-section">
+            <h3>Restaurant Hours</h3>
+            <p>Monday - Thursday: 11:00 AM - 10:00 PM</p>
+            <p>Friday - Saturday: 11:00 AM - 11:00 PM</p>
+            <p>Sunday: 12:00 PM - 9:00 PM</p>
+            <h4>Delivery Zones</h4>
+            <p>Downtown, Midtown, Uptown</p>
+            <p>Free delivery on orders above ₹299</p>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <div class="contact-item">
+              <span class="contact-icon">📞</span>
+              <span>+1 (555) 123-4567</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">✉️</span>
+              <span>info@tastybite.com</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">📍</span>
+              <span>123 Spice Street, Curry City, CC 12345</span>
+            </div>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="footer-section">
+            <h3>Spice Rewards Program</h3>
+            <p>
+              Join our newsletter for exclusive offers and authentic recipes
+            </p>
+            <div class="newsletter-form">
+              <input
+                type="email"
+                class="newsletter-input"
+                placeholder="Enter your email"
+              />
+              <button class="newsletter-btn">Subscribe</button>
+            </div>
+            <div class="social-icons">
+              <div class="social-icon">📘</div>
+              <div class="social-icon">📷</div>
+              <div class="social-icon">🐦</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 TastyBite. All rights reserved. Bringing authentic
+            Indian flavors to your table.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div id="healthy-dishes-backdrop" class="healthy-food-backdrop">
+      <div class="food-dialog">
+        <div class="dialog-inner">
+          <div class="dialog-top">
+            <h2 class="dialog-heading">Light & Healthy South Indian Dishes</h2>
+            <button id="close-healthy-modal" class="close-button">
+              <div class="close-icon-wrapper">
+                <i class="ri-close-line"></i>
+              </div>
+            </button>
+          </div>
+          <div class="food-items-container">
+            <div class="food-item-wrapper">
+              <div class="food-item-layout">
+                <img
+                  src="https://readdy.ai/api/search-image?query=crispy%20golden%20dosa%20with%20coconut%20chutney%20and%20sambar%20on%20banana%20leaf%20traditional%20South%20Indian%20breakfast%20natural%20lighting%20food%20photography&width=200&height=200&seq=dosa2&orientation=squarish"
+                  alt="Masala Dosa"
+                  class="food-image"
+                />
+                <div class="food-details">
+                  <h3 class="food-title">Masala Dosa</h3>
+                  <p class="food-description">
+                    Fermented rice & lentil crepe with potato filling
+                  </p>
+                  <div class="nutrition-tags">
+                    <span class="nutrition-tag calories-tag">180 kcal</span>
+                    <span class="nutrition-tag protein-tag">Protein: 6g</span>
+                    <span class="nutrition-tag carbs-tag">Carbs: 30g</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="food-item-wrapper">
+              <div class="food-item-layout">
+                <img
+                  src="https://readdy.ai/api/search-image?query=steamed%20idli%20with%20coconut%20chutney%20and%20sambar%20traditional%20South%20Indian%20breakfast%20natural%20lighting%20food%20photography&width=200&height=200&seq=idli2&orientation=squarish"
+                  alt="Idli"
+                  class="food-image"
+                />
+                <div class="food-details">
+                  <h3 class="food-title">Idli</h3>
+                  <p class="food-description">Steamed rice & lentil cakes</p>
+                  <div class="nutrition-tags">
+                    <span class="nutrition-tag calories-tag">120 kcal</span>
+                    <span class="nutrition-tag protein-tag">Protein: 4g</span>
+                    <span class="nutrition-tag carbs-tag">Carbs: 25g</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="food-item-wrapper">
+              <div class="food-item-layout">
+                <img
+                  src="https://readdy.ai/api/search-image?query=rasam%20soup%20with%20curry%20leaves%20and%20spices%20traditional%20South%20Indian%20cuisine%20natural%20lighting%20food%20photography&width=200&height=200&seq=rasam2&orientation=squarish"
+                  alt="Rasam"
+                  class="food-image"
+                />
+                <div class="food-details">
+                  <h3 class="food-title">Rasam</h3>
+                  <p class="food-description">Spiced tamarind & tomato soup</p>
+                  <div class="nutrition-tags">
+                    <span class="nutrition-tag calories-tag">80 kcal</span>
+                    <span class="nutrition-tag protein-tag">Protein: 2g</span>
+                    <span class="nutrition-tag carbs-tag">Carbs: 15g</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="food-item-wrapper">
+              <div class="food-item-layout">
+                <img
+                  src="https://readdy.ai/api/search-image?query=upma%20semolina%20porridge%20with%20vegetables%20and%20curry%20leaves%20traditional%20South%20Indian%20breakfast%20natural%20lighting%20food%20photography&width=200&height=200&seq=upma2&orientation=squarish"
+                  alt="Vegetable Upma"
+                  class="food-image"
+                />
+                <div class="food-details">
+                  <h3 class="food-title">Vegetable Upma</h3>
+                  <p class="food-description">
+                    Savory semolina porridge with vegetables
+                  </p>
+                  <div class="nutrition-tags">
+                    <span class="nutrition-tag calories-tag">150 kcal</span>
+                    <span class="nutrition-tag protein-tag">Protein: 5g</span>
+                    <span class="nutrition-tag carbs-tag">Carbs: 28g</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="benefits-section">
+            <h3 class="benefits-heading">Health Benefits</h3>
+            <ul class="benefits-list">
+              <li class="benefit-item">
+                <div class="benefit-checkmark">
+                  <i class="ri-check-line"></i>
+                </div>
+                Fermented dishes improve gut health and digestion
+              </li>
+              <li class="benefit-item">
+                <div class="benefit-checkmark">
+                  <i class="ri-check-line"></i>
+                </div>
+                Low in calories and fat, high in protein and fiber
+              </li>
+              <li class="benefit-item">
+                <div class="benefit-checkmark">
+                  <i class="ri-check-line"></i>
+                </div>
+                Rich in probiotics and essential nutrients
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const openButton = document.getElementById("open-healthy-modal");
+        const modalBackdrop = document.getElementById(
+          "healthy-dishes-backdrop"
+        );
+        const closeButton = document.getElementById("close-healthy-modal");
+        const pageBody = document.body;
+
+        // Open modal function
+        function openHealthyModal() {
+          modalBackdrop.classList.add("active");
+          pageBody.classList.add("no-scroll");
+        }
+
+        // Close modal function
+        function closeHealthyModal() {
+          modalBackdrop.classList.remove("active");
+          pageBody.classList.remove("no-scroll");
+        }
+
+        // Event listeners
+        openButton.addEventListener("click", openHealthyModal);
+        closeButton.addEventListener("click", closeHealthyModal);
+
+        // Close when clicking outside modal
+        modalBackdrop.addEventListener("click", function (event) {
+          if (event.target === modalBackdrop) {
+            closeHealthyModal();
+          }
+        });
+
+        // Close on Escape key press
+        document.addEventListener("keydown", function (event) {
+          if (
+            event.key === "Escape" &&
+            modalBackdrop.classList.contains("active")
+          ) {
+            closeHealthyModal();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
