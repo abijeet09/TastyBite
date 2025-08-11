@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - TastyBite - Authentic Indian Cuisine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        height: 70px;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo-text {
+        font-family: "Pacifico", cursive;
+        font-size: 24px;
+        color: #e53935;
+        margin-right: 8px;
+      }
+
+      .logo-icon {
+        font-size: 20px;
+        color: #e53935;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 32px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #555;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: #e53935;
+      }
+
+      .cart-section {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .cart-btn {
+        position: relative;
+        padding: 8px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        color: #555;
+        transition: color 0.3s ease;
+      }
+
+      .cart-btn:hover {
+        color: #e53935;
+      }
+
+      .cart-count {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        background: #e53935;
+        color: white;
+        font-size: 12px;
+        padding: 2px 6px;
+        border-radius: 50%;
+        min-width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .menu-btn {
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        display: none;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 50vh;
+        margin-top: 70px;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("https://readdy.ai/api/search-image?query=Indian%20chef%20cooking%20in%20traditional%20kitchen%20with%20spices%20and%20tandoor%20oven%20authentic%20restaurant%20ambiance%20warm%20lighting%20professional%20food%20photography&width=1920&height=600&seq=abouther1&orientation=landscape");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+      }
+
+      .hero-content h1 {
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+
+      .hero-content p {
+        font-size: 20px;
+        font-weight: 300;
+        margin-bottom: 32px;
+      }
+
+      /* Sections */
+      .section {
+        padding: 64px 0;
+      }
+
+      .section-gray {
+        background: #f5f5f5;
+      }
+
+      .section-secondary {
+        background: #fff8e1;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 48px;
+      }
+
+      .section-title h2 {
+        font-size: 36px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 16px;
+      }
+
+      .section-title p {
+        font-size: 18px;
+        color: #666;
+      }
+
+      /* Story Section */
+      .story-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+        margin-bottom: 32px;
+      }
+
+      .story-text {
+        font-size: 16px;
+        color: #555;
+        line-height: 1.8;
+      }
+
+      .story-text p {
+        margin-bottom: 20px;
+      }
+
+      .story-image {
+        height: 300px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .story-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Values Grid */
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+      }
+
+      .value-card {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .value-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .value-icon {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 16px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: white;
+        background: #e53935;
+      }
+
+      .value-card h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 12px;
+      }
+
+      .value-card p {
+        color: #666;
+      }
+
+      /* Team Section */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 32px;
+      }
+
+      .team-member {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .team-member:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .member-photo {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 0 auto 16px;
+        overflow: hidden;
+        background: #e53935;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .member-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .member-name {
+        font-size: 20px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+      }
+
+      .member-role {
+        color: #e53935;
+        font-weight: 500;
+        margin-bottom: 12px;
+      }
+
+      .member-description {
+        color: #666;
+        font-size: 14px;
+      }
+
+      /* Awards Section */
+      .awards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 32px;
+      }
+
+      .award-card {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        text-align: center;
+        border: 2px solid #fff8e1;
+        transition: border-color 0.3s ease;
+      }
+
+      .award-card:hover {
+        border-color: #e53935;
+      }
+
+      .award-icon {
+        font-size: 32px;
+        margin-bottom: 16px;
+      }
+
+      .award-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+      }
+
+      .award-year {
+        color: #e53935;
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+
+      .award-description {
+        color: #666;
+        font-size: 14px;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: linear-gradient(
+            rgba(229, 57, 53, 0.9),
+            rgba(211, 47, 47, 0.9)
+          ),
+          url("https://readdy.ai/api/search-image?query=Indian%20restaurant%20dining%20room%20with%20traditional%20decor%20warm%20lighting%20and%20customers%20enjoying%20food%20inviting%20atmosphere&width=1920&height=400&seq=cta1&orientation=landscape");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        padding: 64px 0;
+      }
+
+      .cta-title {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+
+      .cta-text {
+        font-size: 18px;
+        margin-bottom: 32px;
+        opacity: 0.9;
+      }
+
+      .btn {
+        background: white;
+        color: #e53935;
+        border: none;
+        padding: 16px 32px;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        background: #f5f5f5;
+        transform: translateY(-2px);
+      }
+
+      /* Footer */
+      .footer {
+        background: #1a1a1a;
+        color: white;
+        padding: 48px 0;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+      }
+
+      .footer-section h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .footer-section p {
+        color: #ccc;
+        margin-bottom: 8px;
+      }
+
+      .footer-section h4 {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 24px 0 12px 0;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        color: #ccc;
+      }
+
+      .contact-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 12px;
+        font-size: 16px;
+      }
+
+      .newsletter-form {
+        display: flex;
+        margin-bottom: 24px;
+      }
+
+      .newsletter-input {
+        flex: 1;
+        padding: 12px 16px;
+        border: none;
+        border-radius: 8px 0 0 8px;
+        font-size: 14px;
+      }
+
+      .newsletter-btn {
+        background: #e53935;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 0 8px 8px 0;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .newsletter-btn:hover {
+        background: #d32f2f;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 16px;
+      }
+
+      .social-icon {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .social-icon:hover {
+        color: #e53935;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #333;
+        margin-top: 32px;
+        padding-top: 32px;
+        text-align: center;
+        color: #999;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .menu-btn {
+          display: block;
+        }
+
+        .hero-content h1 {
+          font-size: 32px;
+        }
+
+        .hero-content p {
+          font-size: 16px;
+        }
+
+        .section-title h2 {
+          font-size: 28px;
+        }
+
+        .story-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+
+        .values-grid,
+        .team-grid,
+        .awards-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 16px;
+        }
+
+        .hero-content h1 {
+          font-size: 24px;
+        }
+
+        .hero-content p {
+          font-size: 14px;
+        }
+
+        .btn {
+          padding: 12px 24px;
+          font-size: 16px;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <nav class="nav">
+          <div class="logo">
+            <span class="logo-text">TastyBite</span>
+            <span class="logo-icon">🍽️</span>
+          </div>
+
+          <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="menu1.html">Menu</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+
+          <div class="cart-section">
+            <button class="cart-btn">
+              🛒
+              <span class="cart-count">3</span>
+            </button>
+            <button class="menu-btn">☰</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Our Story</h1>
+        <p>A Journey of Passion, Tradition, and Authentic Indian Flavors</p>
+      </div>
+    </section>
+
+    <!-- About Story -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>About TastyBite</h2>
+          <p>Bringing authentic Indian cuisine to your table since 2015</p>
+        </div>
+
+        <div class="story-grid">
+          <div class="story-text">
+            <p>
+              TastyBite was born from a simple dream - to share the rich,
+              diverse flavors of India with food lovers everywhere. Founded by
+              Chef Rajesh Kumar in 2015, our restaurant began as a small family
+              venture dedicated to preserving traditional recipes passed down
+              through generations.
+            </p>
+            <p>
+              What started in a modest kitchen has grown into a beloved
+              destination for authentic Indian cuisine. Every dish we serve
+              tells a story of heritage, crafted with premium spices sourced
+              directly from India and prepared using time-honored techniques
+              that have been perfected over centuries.
+            </p>
+            <p>
+              Today, TastyBite continues to honor its founding principles:
+              authenticity, quality, and the warm hospitality that defines
+              Indian culture. We invite you to experience the true taste of
+              India, one flavorful bite at a time.
+            </p>
+          </div>
+          <div class="story-image">
+            <img
+              src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Traditional Indian Spices"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="section section-gray">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Core Values</h2>
+          <p>The principles that guide everything we do</p>
+        </div>
+
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">🌶️</div>
+            <h3>Authenticity</h3>
+            <p>
+              We stay true to traditional recipes and cooking methods, ensuring
+              every dish reflects the genuine taste of India's diverse regions.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">⭐</div>
+            <h3>Quality</h3>
+            <p>
+              Only the finest ingredients make it to our kitchen. Premium
+              spices, fresh vegetables, and quality meats for exceptional
+              flavors.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">❤️</div>
+            <h3>Hospitality</h3>
+            <p>
+              Indian hospitality is legendary. We extend that same warmth and
+              care to every guest who walks through our doors.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Team -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Meet Our Culinary Team</h2>
+          <p>The passionate chefs behind your favorite dishes</p>
+        </div>
+
+        <div class="team-grid">
+          <div class="team-member">
+            <div class="member-photo">RK</div>
+            <h3 class="member-name">Chef Rajesh Kumar</h3>
+            <p class="member-role">Head Chef & Founder</p>
+            <p class="member-description">
+              With over 20 years of experience, Chef Rajesh brings authentic
+              flavors from his native Punjab and expertise in North Indian
+              cuisine.
+            </p>
+          </div>
+
+          <div class="team-member">
+            <div class="member-photo">SM</div>
+            <h3 class="member-name">Sita Menon</h3>
+            <p class="member-role">South Indian Specialist</p>
+            <p class="member-description">
+              Our dosa and curry expert from Kerala, ensuring authentic South
+              Indian flavors in every bite of our regional specialties.
+            </p>
+          </div>
+
+          <div class="team-member">
+            <div class="member-photo">AS</div>
+            <h3 class="member-name">Amit Sharma</h3>
+            <p class="member-role">Tandoor Master</p>
+            <p class="member-description">
+              Our tandoor specialist who creates perfect naans, kebabs, and
+              tandoori dishes using traditional clay oven techniques.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Awards & Recognition -->
+    <section class="section section-secondary">
+      <div class="container">
+        <div class="section-title">
+          <h2>Awards & Recognition</h2>
+          <p>Honored to be recognized for our commitment to excellence</p>
+        </div>
+
+        <div class="awards-grid">
+          <div class="award-card">
+            <div class="award-icon">🏆</div>
+            <h3 class="award-title">Best Indian Restaurant</h3>
+            <p class="award-year">2023 - City Food Awards</p>
+            <p class="award-description">
+              Recognized for authentic cuisine and outstanding service
+            </p>
+          </div>
+
+          <div class="award-card">
+            <div class="award-icon">⭐</div>
+            <h3 class="award-title">5-Star Rating</h3>
+            <p class="award-year">2022 - Food Critics Choice</p>
+            <p class="award-description">
+              Rated excellent for food quality and dining experience
+            </p>
+          </div>
+
+          <div class="award-card">
+            <div class="award-icon">🌟</div>
+            <h3 class="award-title">Customer's Choice</h3>
+            <p class="award-year">2023 - Local Dining Guide</p>
+            <p class="award-description">
+              Voted favorite restaurant by our valued customers
+            </p>
+          </div>
+
+          <div class="award-card">
+            <div class="award-icon">🎖️</div>
+            <h3 class="award-title">Heritage Cuisine Award</h3>
+            <p class="award-year">2022 - Cultural Society</p>
+            <p class="award-description">
+              Honored for preserving traditional Indian cooking methods
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="cta-title">Experience Authentic India</h2>
+        <p class="cta-text">
+          Join us for an unforgettable culinary journey through the diverse
+          flavors of India
+        </p>
+        <button class="btn">Explore Our Menu</button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Restaurant Info -->
+          <div class="footer-section">
+            <h3>Restaurant Hours</h3>
+            <p>Monday - Thursday: 11:00 AM - 10:00 PM</p>
+            <p>Friday - Saturday: 11:00 AM - 11:00 PM</p>
+            <p>Sunday: 12:00 PM - 9:00 PM</p>
+            <h4>Delivery Zones</h4>
+            <p>Downtown, Midtown, Uptown</p>
+            <p>Free delivery on orders above ₹299</p>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <div class="contact-item">
+              <span class="contact-icon">📞</span>
+              <span>+1 (555) 123-4567</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">✉️</span>
+              <span>info@tastybite.com</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">📍</span>
+              <span>123 Spice Street, Curry City, CC 12345</span>
+            </div>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="footer-section">
+            <h3>Spice Rewards Program</h3>
+            <p>
+              Join our newsletter for exclusive offers and authentic recipes
+            </p>
+            <div class="newsletter-form">
+              <input
+                type="email"
+                class="newsletter-input"
+                placeholder="Enter your email"
+              />
+              <button class="newsletter-btn">Subscribe</button>
+            </div>
+            <div class="social-icons">
+              <div class="social-icon">📘</div>
+              <div class="social-icon">📷</div>
+              <div class="social-icon">🐦</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 TastyBite. All rights reserved. Bringing authentic
+            Indian flavors to your table.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

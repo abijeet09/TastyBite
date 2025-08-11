@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu - Spice Paradise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+            color: #111827;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-family: 'Pacifico', serif;
+            font-size: 1.5rem;
+            color: #dc2626;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #374151;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #dc2626;
+        }
+
+        .nav-link.active {
+            color: #dc2626;
+            font-weight: 500;
+        }
+
+        .cart-icon {
+            position: relative;
+            padding: 0.5rem;
+            color: #374151;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .cart-icon:hover {
+            color: #dc2626;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background-color: #dc2626;
+            color: white;
+            font-size: 0.75rem;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .page-title {
+            margin-bottom: 2rem;
+        }
+
+        .page-title h1 {
+            font-size: 1.875rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-title p {
+            color: #6b7280;
+        }
+
+        /* Search and Filter Section */
+        .search-filter-box {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .search-row {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .search-input-container {
+            position: relative;
+            flex: 1;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 0.875rem;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #dc2626;
+            box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+
+        .filter-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .select-container {
+            position: relative;
+        }
+
+        .select {
+            appearance: none;
+            background-color: white;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 0.75rem 2rem 0.75rem 1rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+
+        .select:focus {
+            outline: none;
+            border-color: #dc2626;
+            box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
+        }
+
+        .select-arrow {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            pointer-events: none;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background-color: white;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-btn:hover {
+            background-color: #f9fafb;
+        }
+
+        /* Filter Panel */
+        .filter-panel {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .filter-group h3 {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+
+        .price-slider {
+            width: 100%;
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 2px;
+            outline: none;
+            appearance: none;
+        }
+
+        .price-slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #dc2626;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .price-range {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .checkbox:checked {
+            background-color: #dc2626;
+            border-color: #dc2626;
+        }
+
+        .radio {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #d1d5db;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .radio:checked {
+            background-color: #dc2626;
+            border-color: #dc2626;
+        }
+
+        .checkbox-label {
+            font-size: 0.875rem;
+            color: #374151;
+            cursor: pointer;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .menu-content {
+            flex: 1;
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .category-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .category-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .category-btn.active {
+            background-color: #dc2626;
+            color: white;
+        }
+
+        .category-btn:not(.active) {
+            background-color: transparent;
+            color: #374151;
+        }
+
+        .category-btn:not(.active):hover {
+            background-color: #f3f4f6;
+        }
+
+        /* Menu Sections */
+        .menu-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .menu-section h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-icon {
+            color: #dc2626;
+            font-size: 1.25rem;
+        }
+
+        /* Dish Grid */
+        .dish-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .dish-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .dish-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .dish-image {
+            width: 100%;
+            height: 192px;
+            object-fit: cover;
+        }
+
+        .dish-info {
+            padding: 1rem;
+        }
+
+        .dish-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .dish-name {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .dish-price {
+            font-size: 1.125rem;
+            font-weight: bold;
+            color: #dc2626;
+        }
+
+        .dish-description {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+        }
+
+        .dish-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dish-icons {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .spice-level {
+            display: flex;
+            gap: 2px;
+        }
+
+        .spice-icon {
+            font-size: 0.75rem;
+        }
+
+        .spice-icon.active {
+            color: #dc2626;
+        }
+
+        .spice-icon:not(.active) {
+            color: #d1d5db;
+        }
+
+        .dietary-icon {
+            font-size: 1rem;
+        }
+
+        .vegetarian {
+            color: #10b981;
+        }
+
+        .vegan {
+            color: #10b981;
+        }
+
+        .gluten-free {
+            color: #3b82f6;
+        }
+
+        .add-btn {
+            padding: 0.5rem 1rem;
+            background-color: #dc2626;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            white-space: nowrap;
+        }
+
+        .add-btn:hover {
+            background-color: #b91c1c;
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            width: 320px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .cart-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .cart-empty {
+            text-align: center;
+            color: #6b7280;
+            padding: 2rem 0;
+        }
+
+        .cart-empty-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-empty p {
+            font-size: 0.875rem;
+        }
+
+        .cart-summary {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 1rem;
+        }
+
+        .cart-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-row.total {
+            margin-bottom: 1rem;
+        }
+
+        .cart-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .cart-value {
+            font-weight: 600;
+        }
+
+        .cart-total {
+            font-weight: bold;
+            font-size: 1.125rem;
+            color: #dc2626;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background-color: #dc2626;
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 0.5rem;
+        }
+
+        .checkout-btn:hover {
+            background-color: #b91c1c;
+        }
+
+        .checkout-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .checkout-note {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .header-container {
+                padding: 0 1.5rem;
+            }
+
+            .nav-links {
+                display: flex;
+            }
+
+            .container {
+                padding: 2rem 1.5rem;
+            }
+
+            .search-row {
+                flex-direction: row;
+            }
+
+            .dish-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .filter-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header-container {
+                padding: 0 2rem;
+            }
+
+            .container {
+                padding: 2rem;
+            }
+
+            .dish-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">TastyBite</div>
+            <nav class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="menu.html" class="nav-link active">Menu</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="login.html" class="nav-link">Login</a>
+            </nav>
+            <div class="cart-icon">
+                <i class="ri-shopping-cart-line"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Page Title -->
+        <div class="page-title">
+            <h1>Our Menu</h1>
+            <p>Discover our authentic flavors and spices from around the world</p>
+        </div>
+
+        <!-- Search and Filter Section -->
+        <div class="search-filter-box">
+            <div class="search-row">
+                <div class="search-input-container">
+                    <i class="ri-search-line search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search dishes, cuisines...">
+                </div>
+                <div class="filter-controls">
+                    <div class="select-container">
+                        <select class="select">
+                            <option value="">All Cuisines</option>
+                            <option value="indian">Indian</option>
+                            <option value="chinese">Chinese</option>
+                            <option value="italian">Italian</option>
+                            <option value="mexican">Mexican</option>
+                        </select>
+                        <i class="ri-arrow-down-s-line select-arrow"></i>
+                    </div>
+                    <button class="filter-btn">
+                        <i class="ri-filter-line"></i>
+                        Filters
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Panel -->
+            <div class="filter-panel">
+                <div class="filter-grid">
+                    <div class="filter-group">
+                        <h3>Price Range</h3>
+                        <input type="range" class="price-slider" min="5" max="50" value="50">
+                        <div class="price-range">
+                            <span>$5</span>
+                            <span>$50</span>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h3>Dietary Preferences</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" class="checkbox">
+                                <span class="checkbox-label">Vegetarian</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" class="checkbox">
+                                <span class="checkbox-label">Vegan</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" class="checkbox">
+                                <span class="checkbox-label">Gluten Free</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h3>Spice Level</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="radio" name="spice" class="radio">
+                                <span class="checkbox-label">Mild</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="radio" name="spice" class="radio">
+                                <span class="checkbox-label">Medium</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="radio" name="spice" class="radio">
+                                <span class="checkbox-label">Hot</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="menu-content">
+                <!-- Category Navigation -->
+                <div class="category-nav">
+                    <div class="category-buttons">
+                        <button class="category-btn active">All Items</button>
+                        <button class="category-btn">Appetizers</button>
+                        <button class="category-btn">Main Course</button>
+                        <button class="category-btn">Desserts</button>
+                        <button class="category-btn">Beverages</button>
+                    </div>
+                </div>
+
+                <!-- Menu Sections -->
+                <div class="menu-sections">
+                    <!-- Appetizers Section -->
+                    <div class="menu-section">
+                        <h2>
+                            <i class="ri-restaurant-line section-icon"></i>
+                            Appetizers
+                        </h2>
+                        <div class="dish-grid">
+                            <div class="dish-card">
+                                <img src="https://readdy.ai/api/search-image?query=Crispy%20golden%20samosas%20filled%20with%20spiced%20potatoes%20and%20peas%2C%20served%20on%20white%20ceramic%20plate%20with%20mint%20chutney%2C%20warm%20lighting%2C%20restaurant%20food%20photography%20style%2C%20clean%20background&width=400&height=250&seq=samosa1&orientation=landscape" alt="Vegetable Samosas" class="dish-image">
+                                <div class="dish-info">
+                                    <div class="dish-header">
+                                        <h3 class="dish-name">Vegetable Samosas</h3>
+                                        <span class="dish-price">$12</span>
+                                    </div>
+                                    <p class="dish-description">Crispy pastry filled with spiced potatoes and peas, served with mint chutney</p>
+                                    <div class="dish-footer">
+                                        <div class="dish-icons">
+                                            <div class="spice-level">
+                                                <i class="ri-fire-line spice-icon active"></i>
+                                                <i class="ri-fire-line spice-icon active"></i>
+                                                <i class="ri-fire-line spice-icon"></i>
+                                            </div>
+                                            <i class="ri-leaf-line dietary-icon vegetarian"></i>
+                                        </div>
+                                        <button class="add-btn">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dish-card">
+                                <img src="https://readdy.ai/api/search-image?query=Steamed%20chicken%20dumplings%20in%20bamboo%20steamer%20basket%2C%20traditional%20Chinese%20dim%20sum%2C%20garnished%20with%20soy%20sauce%20and%20chili%20oil%2C%20professional%20food%20photography%2C%20clean%20white%20background&width=400&height=250&seq=dumpling1&orientation=landscape" alt="Chicken Dumplings" class="dish-image">
+                                <div class="dish-info">
+                                    <div class="dish-header">
+                                        <h3 class="dish-name">Chicken Dumplings</h3>
+                                        <span class="dish-price">$15</span>
+                                    </div>
+                                    <p class="dish-description">Steamed dumplings filled with seasoned chicken and vegetables, served with soy dipping sauce</p>
+                                    <div class="dish-footer">
+                                        <div class="dish-icons">
+                                            <div class="spice-level">
+                                                <i class="ri-fire-line spice-icon active"></i>
+                                                <i class="ri-fire-line spice-icon"></i>
+                                                <i class="ri-fire-line spice-icon"></i>
+                                            </div>
+                                        </div>
+                                        <button class="add-btn">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dish-card">
+                                <img src="https://readdy.ai/api/search-image?query=Fresh%20bruschetta%20with%20diced%20tomatoes%2C%20basil%2C%20and%20mozzarella%20on%20toasted%20bread%2C%20drizzled%20with%20balsamic%20glaze%2C%20elegant%20restaurant%20presentation%2C%20clean%20white%20background&width=400&height=250&seq=bruschetta1&orientation=landscape" alt="Bruschetta Trio" class="dish-image">
+                                <div class="dish-info">
+                                    <div class="dish-header">
+                                        <h3 class="dish-name">Bruschetta Trio</h3>
+                                        <span class="dish-price">$18</span>
+                                    </div>
+                                    <p class="dish-description">Three varieties of bruschetta with fresh tomatoes, basil, and mozzarella</p>
+                                    <div class="dish-footer">
+                                        <div class="dish-icons">
+                                            <div class="spice-level">
+                                                <i class="ri-fire-line spice-icon active"></i>
+                                                <i class="ri-fire-line spice-icon"></i>
+                                                <i class="ri-fire-line spice-icon"></i>
+                                            </div>
+                                            <i class="ri-leaf-line dietary-icon vegetarian"></i>
+                                        </div>
+                                        <button class="add-btn">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main Course Section -->
+                    <div class="menu-section">
+                        <h2>
+                            <i class="ri-bowl-line section-icon"></i>
+                            Main Course
+                        </h2>
+                        <div class="dish-grid">
+                            <div class="dish-card">
+                                <img src="https://readdy.ai/api/search-image?query=Chicken%20tikka%20masala%20in%20creamy%20orange%20curry%20sauce%20with%20basmati%20rice%2C%20garnished%20with%20fresh%20cilantro%2C%20served%20in%20traditional%20Indian%20bowl%2C%20warm%20restaurant%20lighting%2C%20clean%20background&width=400&height=250&seq=tikka1&orientation=landscape" alt="Chicken Tikka Masala" class="dish-image">
+                                <div class="dish-info">
+                                    <div class="dish-header">
+                                        <h3 class="dish-name">Chicken Tikka Masala</h3>
+                                        <span class="dish-price">$28</span>
+                                    </div>
+                                    <p class="dish-description">Tender chicken in creamy tomato-based curry sauce, served with basmati rice</p>
+                                    <div class="dish-footer">
+                                        <div class="dish-icons">
+                                            <div class="spice-level">
+                                                <i class="ri-fire-line spice-icon active"></i>
+                                                <i class="ri-fire-line spice-icon active"></i>
+                                                <i class="ri-fire-line spice-icon active"></i>
+                                            </div>
+                                        </div>
+                                        <button class="add-btn">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dish-card">
+                                <img src="https://readdy.ai/api/search-image?query=Grilled%20salmon%20fillet%20with%20lemon%20herb%20butter%2C%20roasted%20vegetables%20and%20quinoa%2C%20elegant%20restaurant%20plating%2C%20garnished%20with%20microgreens%2C%20professional%20food%20photography%2C%20clean%20white%20background&width=400&height=250&seq=salmon1&orientation=landscape" alt="Grilled Salmon" class="dish-image">
+                                <div class="dish-info">
+                                    <div class="dish-header">
+                                        <h3 class="dish-name">Grilled Salmon</h3>
+                                        <span class="dish-price">$32</span>
+                                    </div>
+                                    <p class="dish-description">Fresh Atlantic salmon with lemon herb butter, roasted vegetables, and quinoa</p>
+                                    <div class="dish-footer">
+                                        <div class="dish-icons">
+                                            <div class="spice-level">
+                                                <i class="ri-fire-line spice-icon active"></i>
+                                                <i class="ri-fire-line spice-icon"></i>
+                                                <i class="ri-fire-line spice-icon"></i>
+                                            </div>
+                                            <i class="ri-check-line dietary-icon gluten-free"></i>
+                                        </div>
+                                        <button class="add-btn">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dish-card">
+                                <img src="https://readdy.ai/api/search-image?query=Vegetarian%20burrito%20bowl%20with%20black%20beans%2C%20rice%2C%20avocado%2C%20corn%2C%20tomatoes%2C%20and%20cheese%2C%20colorful%20Mexican%20cuisine%2C%20fresh%20ingredients%2C%20restaurant%20presentation%2C%20clean%20white%20background&width=400&height=250&seq=burrito1&orientation=landscape" alt="Vegetarian Burrito Bowl" class="dish-image">
+                                <div class="dish-info">
+                                    <div class="dish-header">
+                                        <h3 class="dish-name">Vegetarian Burrito Bowl</h3>
+                                        <span class="dish-price">$24</span>
+                                    </div>
+                                    <p class="dish-description">Black beans, rice, avocado, corn, tomatoes, and cheese with cilantro lime dressing</p>
+                                    <div class="dish-footer">
+                                        <div class="dish-icons">
+                                            <div class="spice-level">
+                                                <i class="ri-fire-line spice-icon active"></i>
+                                                <i class="ri-fire-line spice-icon active"></i>
+                                                <i class="ri-fire-line spice-icon"></i>
+                                            </div>
+                                            <i class="ri-leaf-line dietary-icon vegetarian"></i>
+                                            <i class="ri-check-line dietary-icon gluten-free"></i>
+                                        </div>
+                                        <button class="add-btn">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Desserts Section -->
+                    <div class="menu-section">
+                        <h2>
+                            <i class="ri-cake-line section-icon"></i>
+                            Desserts
+                        </h2>
+                        <div class="dish-grid">
+                            <div class="dish-card">
+                                <img src="https://readdy.ai/api/search-image?query=Classic%20tiramisu%20dessert%20with%20coffee-soaked%20ladyfingers%20and%20mascarpone%20cream%2C%20dusted%20with%20cocoa%20powder%2C%20elegant%20restaurant%20presentation%2C%20clean%20white%20background&width=400&height=250&seq=tiramisu1&orientation=landscape" alt="Tiramisu" class="dish-image">
+                                <div class="dish-info">
+                                    <div class="dish-header">
+                                        <h3 class="dish-name">Tiramisu</h3>
+                                        <span class="dish-price">$12</span>
+                                    </div>
+                                    <p class="dish-description">Classic Italian dessert with coffee-soaked ladyfingers and mascarpone cream</p>
+                                    <div class="dish-footer">
+                                        <div class="dish-icons">
+                                            <i class="ri-leaf-line dietary-icon vegetarian"></i>
+                                        </div>
+                                        <button class="add-btn">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dish-card">
+                                <img src="https://readdy.ai/api/search-image?query=Gulab%20jamun%20dessert%2C%20golden%20brown%20milk%20dumplings%20in%20sweet%20syrup%2C%20garnished%20with%20pistachios%2C%20traditional%20Indian%20sweets%2C%20restaurant%20presentation%2C%20clean%20white%20background&width=400&height=250&seq=gulab1&orientation=landscape" alt="Gulab Jamun" class="dish-image">
+                                <div class="dish-info">
+                                    <div class="dish-header">
+                                        <h3 class="dish-name">Gulab Jamun</h3>
+                                        <span class="dish-price">$10</span>
+                                    </div>
+                                    <p class="dish-description">Traditional Indian milk dumplings in sweet syrup, garnished with pistachios</p>
+                                    <div class="dish-footer">
+                                        <div class="dish-icons">
+                                            <i class="ri-leaf-line dietary-icon vegetarian"></i>
+                                        </div>
+                                        <button class="add-btn">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dish-card">
+                                <img src="https://readdy.ai/api/search-image?query=Churros%20with%20cinnamon%20sugar%20and%20chocolate%20dipping%20sauce%2C%20golden%20fried%20pastry%2C%20Mexican%20dessert%2C%20restaurant%20presentation%2C%20clean%20white%20background&width=400&height=250&seq=churros1&orientation=landscape" alt="Churros" class="dish-image">
+                                <div class="dish-info">
+                                    <div class="dish-header">
+                                        <h3 class="dish-name">Churros</h3>
+                                        <span class="dish-price">$8</span>
+                                    </div>
+                                    <p class="dish-description">Crispy fried pastry with cinnamon sugar and chocolate dipping sauce</p>
+                                    <div class="dish-footer">
+                                        <div class="dish-icons">
+                                            <i class="ri-seedling-line dietary-icon vegan"></i>
+                                        </div>
+                                        <button class="add-btn">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Beverages Section -->
+                    <div class="menu-section">
+                        <h2>
+                            <i class="ri-cup-line section-icon"></i>
+                            Beverages
+                        </h2>
+                        <div class="dish-grid">
+                            <div class="dish-card">
+                                <img src="https://readdy.ai/api/search-image?query=Mango%20lassi%20in%20tall%20glass%20with%20fresh%20mango%20slices%2C%20creamy%20yogurt%20drink%2C%20Indian%20beverage%2C%20garnished%20with%20mint%2C%20restaurant%20presentation%2C%20clean%20white%20background&width=400&height=250&seq=lassi1&orientation=landscape" alt="Mango Lassi" class="dish-image">
+                                <div class="dish-info">
+                                    <div class="dish-header">
+                                        <h3 class="dish-name">Mango Lassi</h3>
+                                        <span class="dish-price">$6</span>
+                                    </div>
+                                    <p class="dish-description">Creamy yogurt drink blended with fresh mango and cardamom</p>
+                                    <div class="dish-footer">
+                                        <div class="dish-icons">
+                                            <i class="ri-leaf-line dietary-icon vegetarian"></i>
+                                        </div>
+                                        <button class="add-btn">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dish-card">
+                                <img src="https://readdy.ai/api/search-image?query=Green%20tea%20in%20traditional%20ceramic%20teapot%20and%20cup%2C%20steaming%20hot%2C%20Asian%20tea%20ceremony%2C%20minimalist%20presentation%2C%20clean%20white%20background&width=400&height=250&seq=tea1&orientation=landscape" alt="Green Tea" class="dish-image">
+                                <div class="dish-info">
+                                    <div class="dish-header">
+                                        <h3 class="dish-name">Green Tea</h3>
+                                        <span class="dish-price">$4</span>
+                                    </div>
+                                    <p class="dish-description">Premium loose leaf green tea, served hot in traditional teapot</p>
+                                    <div class="dish-footer">
+                                        <div class="dish-icons">
+                                            <i class="ri-seedling-line dietary-icon vegan"></i>
+                                        </div>
+                                        <button class="add-btn">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dish-card">
+                                <img src="https://readdy.ai/api/search-image?query=Fresh%20lemonade%20in%20tall%20glass%20with%20ice%20cubes%2C%20lemon%20slices%2C%20and%20mint%20garnish%2C%20refreshing%20summer%20drink%2C%20restaurant%20presentation%2C%20clean%20white%20background&width=400&height=250&seq=lemonade1&orientation=landscape" alt="Fresh Lemonade" class="dish-image">
+                                <div class="dish-info">
+                                    <div class="dish-header">
+                                        <h3 class="dish-name">Fresh Lemonade</h3>
+                                        <span class="dish-price">$5</span>
+                                    </div>
+                                    <p class="dish-description">Freshly squeezed lemon juice with mint and sparkling water</p>
+                                    <div class="dish-footer">
+                                        <div class="dish-icons">
+                                            <i class="ri-seedling-line dietary-icon vegan"></i>
+                                        </div>
+                                        <button class="add-btn">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Sidebar -->
+            <div class="cart-sidebar">
+                <h3 class="cart-title">Your Order</h3>
+                <div class="cart-empty">
+                    <div class="cart-empty-icon">
+                        <i class="ri-shopping-cart-line"></i>
+                    </div>
+                    <p>Your cart is empty</p>
+                </div>
+                <div class="cart-summary">
+                    <div class="cart-row">
+                        <span class="cart-label">Subtotal:</span>
+                        <span class="cart-value">$0.00</span>
+                    </div>
+                    <div class="cart-row">
+                        <span class="cart-label">Tax (8%):</span>
+                        <span class="cart-value">$0.00</span>
+                    </div>
+                    <div class="cart-row total">
+                        <span class="cart-label">Total:</span>
+                        <span class="cart-total">$0.00</span>
+                    </div>
+                    <button class="checkout-btn" disabled>Checkout</button>
+                    <p class="checkout-note">Minimum order: $20</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

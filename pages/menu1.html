@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu - TastyBite - Authentic Indian Cuisine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        height: 70px;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo-text {
+        font-family: "Pacifico", cursive;
+        font-size: 24px;
+        color: #e53935;
+        margin-right: 8px;
+      }
+
+      .logo-icon {
+        font-size: 20px;
+        color: #e53935;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 32px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #555;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: #e53935;
+      }
+
+      .cart-section {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .cart-btn {
+        position: relative;
+        padding: 8px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        color: #555;
+        transition: color 0.3s ease;
+      }
+
+      .cart-btn:hover {
+        color: #e53935;
+      }
+
+      .cart-count {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        background: #e53935;
+        color: white;
+        font-size: 12px;
+        padding: 2px 6px;
+        border-radius: 50%;
+        min-width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .menu-btn {
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        display: none;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 50vh;
+        margin-top: 70px;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("https://readdy.ai/api/search-image?query=Indian%20restaurant%20menu%20spread%20with%20various%20traditional%20dishes%20colorful%20presentation%20authentic%20food%20photography%20warm%20lighting&width=1920&height=600&seq=menuhero1&orientation=landscape");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+      }
+
+      .hero-content h1 {
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+
+      .hero-content p {
+        font-size: 20px;
+        font-weight: 300;
+        margin-bottom: 32px;
+      }
+
+      /* Sections */
+      .section {
+        padding: 64px 0;
+      }
+
+      .section-gray {
+        background: #f5f5f5;
+      }
+
+      .section-secondary {
+        background: #fff8e1;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 48px;
+      }
+
+      .section-title h2 {
+        font-size: 36px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 16px;
+      }
+
+      .section-title p {
+        font-size: 18px;
+        color: #666;
+      }
+
+      /* Menu Categories */
+      .menu-section {
+        margin-bottom: 64px;
+      }
+
+      .category-title {
+        font-size: 28px;
+        font-weight: bold;
+        color: #e53935;
+        text-align: center;
+        margin-bottom: 32px;
+        position: relative;
+      }
+
+      .category-title::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 3px;
+        background: #e53935;
+        margin: 12px auto;
+        border-radius: 2px;
+      }
+
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 24px;
+      }
+
+      /* Menu Items */
+      .menu-item {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .menu-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        border-color: #e53935;
+      }
+
+      .item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 12px;
+      }
+
+      .item-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 4px;
+        flex: 1;
+      }
+
+      .item-price {
+        font-size: 24px;
+        font-weight: bold;
+        color: #e53935;
+        margin-left: 16px;
+      }
+
+      .item-description {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 16px;
+      }
+
+      .item-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .item-tags {
+        display: flex;
+        gap: 8px;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+        color: white;
+      }
+
+      .tag-spicy {
+        background: #e53935;
+      }
+
+      .tag-veg {
+        background: #4caf50;
+      }
+
+      .tag-popular {
+        background: #ff9800;
+      }
+
+      .tag-new {
+        background: #2196f3;
+      }
+
+      .spice-level {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .spice-dots {
+        display: flex;
+        gap: 3px;
+      }
+
+      .spice-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ddd;
+      }
+
+      .spice-dot.active-green {
+        background: #4caf50;
+      }
+
+      .spice-dot.active-yellow {
+        background: #ff9800;
+      }
+
+      .spice-dot.active-red {
+        background: #f44336;
+      }
+
+      .add-btn {
+        background: #e53935;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .add-btn:hover {
+        background: #d32f2f;
+      }
+
+      /* Special Offers */
+      .special-section {
+        background: linear-gradient(135deg, #e53935, #d32f2f);
+        color: white;
+        text-align: center;
+        padding: 48px 0;
+        margin: 64px 0;
+        border-radius: 12px;
+      }
+
+      .special-title {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+
+      .special-text {
+        font-size: 18px;
+        margin-bottom: 24px;
+        opacity: 0.9;
+      }
+
+      .special-offers {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+        margin-top: 32px;
+      }
+
+      .offer-card {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 20px;
+        backdrop-filter: blur(10px);
+      }
+
+      .offer-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .offer-description {
+        font-size: 14px;
+        opacity: 0.9;
+      }
+
+      /* Dietary Info */
+      .dietary-info {
+        background: #f9f9f9;
+        border-radius: 12px;
+        padding: 24px;
+        margin: 32px 0;
+      }
+
+      .dietary-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 16px;
+        text-align: center;
+      }
+
+      .dietary-items {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+
+      .dietary-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .dietary-icon {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+      }
+
+      .veg-icon {
+        background: #4caf50;
+      }
+
+      .spicy-icon {
+        background: #e53935;
+      }
+
+      .popular-icon {
+        background: #ff9800;
+      }
+
+      .new-icon {
+        background: #2196f3;
+      }
+
+      .dietary-text {
+        font-size: 14px;
+        color: #666;
+      }
+
+      /* Footer */
+      .footer {
+        background: #1a1a1a;
+        color: white;
+        padding: 48px 0;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+      }
+
+      .footer-section h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .footer-section p {
+        color: #ccc;
+        margin-bottom: 8px;
+      }
+
+      .footer-section h4 {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 24px 0 12px 0;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        color: #ccc;
+      }
+
+      .contact-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 12px;
+        font-size: 16px;
+      }
+
+      .newsletter-form {
+        display: flex;
+        margin-bottom: 24px;
+      }
+
+      .newsletter-input {
+        flex: 1;
+        padding: 12px 16px;
+        border: none;
+        border-radius: 8px 0 0 8px;
+        font-size: 14px;
+      }
+
+      .newsletter-btn {
+        background: #e53935;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 0 8px 8px 0;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .newsletter-btn:hover {
+        background: #d32f2f;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 16px;
+      }
+
+      .social-icon {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .social-icon:hover {
+        color: #e53935;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #333;
+        margin-top: 32px;
+        padding-top: 32px;
+        text-align: center;
+        color: #999;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .menu-btn {
+          display: block;
+        }
+
+        .hero-content h1 {
+          font-size: 32px;
+        }
+
+        .hero-content p {
+          font-size: 16px;
+        }
+
+        .section-title h2 {
+          font-size: 28px;
+        }
+
+        .category-title {
+          font-size: 24px;
+        }
+
+        .menu-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .item-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .item-price {
+          margin-left: 0;
+          margin-top: 4px;
+        }
+
+        .dietary-items {
+          gap: 16px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 16px;
+        }
+
+        .hero-content h1 {
+          font-size: 24px;
+        }
+
+        .hero-content p {
+          font-size: 14px;
+        }
+
+        .menu-item {
+          padding: 20px;
+        }
+
+        .item-footer {
+          flex-direction: column;
+          gap: 12px;
+          align-items: flex-start;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <nav class="nav">
+          <div class="logo">
+            <span class="logo-text">TastyBite</span>
+            <span class="logo-icon">🍽️</span>
+          </div>
+
+          <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="menu1.html" class="active">Menu</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+
+          <div class="cart-section">
+            <button class="cart-btn">
+              🛒
+              <span class="cart-count">3</span>
+            </button>
+            <button class="menu-btn">☰</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Our Menu</h1>
+        <p>
+          Discover authentic Indian flavors crafted with traditional recipes and
+          premium spices
+        </p>
+      </div>
+    </section>
+
+    <!-- Menu Legend -->
+    <section class="section">
+      <div class="container">
+        <div class="dietary-info">
+          <h3 class="dietary-title">Menu Guide</h3>
+          <div class="dietary-items">
+            <div class="dietary-item">
+              <div class="dietary-icon veg-icon"></div>
+              <span class="dietary-text">Vegetarian</span>
+            </div>
+            <div class="dietary-item">
+              <div class="dietary-icon spicy-icon"></div>
+              <span class="dietary-text">Spicy</span>
+            </div>
+            <div class="dietary-item">
+              <div class="dietary-icon popular-icon"></div>
+              <span class="dietary-text">Popular</span>
+            </div>
+            <div class="dietary-item">
+              <div class="dietary-icon new-icon"></div>
+              <span class="dietary-text">New Item</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Breakfast Menu -->
+    <section class="section section-gray">
+      <div class="container">
+        <div class="menu-section">
+          <h2 class="category-title">Breakfast Specials</h2>
+          <div class="menu-grid">
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Masala Dosa</h3>
+                <span class="item-price">₹149</span>
+              </div>
+              <p class="item-description">
+                Crispy rice and lentil crepe filled with spiced potato curry,
+                served with coconut chutney and sambar
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-veg">Veg</span>
+                  <span class="tag tag-popular">Popular</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Idli Sambar</h3>
+                <span class="item-price">₹99</span>
+              </div>
+              <p class="item-description">
+                Steamed rice cakes served with lentil curry, coconut chutney,
+                and tangy tomato chutney
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-veg">Veg</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Poha</h3>
+                <span class="item-price">₹79</span>
+              </div>
+              <p class="item-description">
+                Flattened rice cooked with onions, mustard seeds, curry leaves,
+                and fresh herbs
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-veg">Veg</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Aloo Paratha</h3>
+                <span class="item-price">₹129</span>
+              </div>
+              <p class="item-description">
+                Stuffed flatbread with spiced potato filling, served with butter,
+                curd, and pickle
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-veg">Veg</span>
+                  <span class="tag tag-popular">Popular</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lunch Menu -->
+    <section class="section">
+      <div class="container">
+        <div class="menu-section">
+          <h2 class="category-title">Lunch Favorites</h2>
+          <div class="menu-grid">
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Butter Chicken</h3>
+                <span class="item-price">₹299</span>
+              </div>
+              <p class="item-description">
+                Tender chicken cooked in rich tomato and cream sauce with
+                aromatic spices, served with basmati rice
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-popular">Popular</span>
+                  <span class="tag tag-spicy">Mild</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Hyderabadi Biryani</h3>
+                <span class="item-price">₹349</span>
+              </div>
+              <p class="item-description">
+                Aromatic basmati rice layered with marinated chicken, cooked with
+                saffron and served with raita and shorba
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-popular">Popular</span>
+                  <span class="tag tag-spicy">Medium</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Paneer Makhani</h3>
+                <span class="item-price">₹249</span>
+              </div>
+              <p class="item-description">
+                Cottage cheese cubes in creamy tomato gravy with butter and
+                aromatic spices, served with naan
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-veg">Veg</span>
+                  <span class="tag tag-popular">Popular</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Dal Tadka</h3>
+                <span class="item-price">₹179</span>
+              </div>
+              <p class="item-description">
+                Yellow lentils tempered with cumin, garlic, and fresh herbs,
+                served with steamed rice
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-veg">Veg</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Fish Curry</h3>
+                <span class="item-price">₹329</span>
+              </div>
+              <p class="item-description">
+                Fresh fish cooked in coconut milk with curry leaves, mustard
+                seeds, and South Indian spices
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-spicy">Spicy</span>
+                  <span class="tag tag-new">New</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Rajma Chawal</h3>
+                <span class="item-price">₹199</span>
+              </div>
+              <p class="item-description">
+                Kidney beans cooked in thick tomato gravy with aromatic spices,
+                served with steamed basmati rice
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-veg">Veg</span>
+                  <span class="tag tag-spicy">Medium</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="special-section">
+      <div class="container">
+        <h2 class="special-title">Today's Special Offers</h2>
+        <p class="special-text">
+          Limited time deals on your favorite dishes
+        </p>
+        <div class="special-offers">
+          <div class="offer-card">
+            <h3 class="offer-title">Lunch Combo</h3>
+            <p class="offer-description">
+              Any curry + rice + naan + drink for just ₹199
+            </p>
+          </div>
+          <div class="offer-card">
+            <h3 class="offer-title">Family Thali</h3>
+            <p class="offer-description">
+              Complete meal for 4 people - ₹799 (Save ₹200)
+            </p>
+          </div>
+          <div class="offer-card">
+            <h3 class="offer-title">Weekend Special</h3>
+            <p class="offer-description">
+              Free dessert with any biryani order above ₹300
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Snacks Menu -->
+    <section class="section section-secondary">
+      <div class="container">
+        <div class="menu-section">
+          <h2 class="category-title">Snacks & Appetizers</h2>
+          <div class="menu-grid">
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Samosa (2 pcs)</h3>
+                <span class="item-price">₹49</span>
+              </div>
+              <p class="item-description">
+                Crispy triangular pastries filled with spiced potatoes and green
+                peas, served with chutneys
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-veg">Veg</span>
+                  <span class="tag tag-popular">Popular</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Pakora Platter</h3>
+                <span class="item-price">₹129</span>
+              </div>
+              <p class="item-description">
+                Mixed vegetable fritters with onion, potato, and spinach, served
+                with mint chutney
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-veg">Veg</span>
+                  <span class="tag tag-spicy">Medium</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Chicken Tikka</h3>
+                <span class="item-price">₹249</span>
+              </div>
+              <p class="item-description">
+                Marinated chicken pieces grilled in tandoor with yogurt and
+                aromatic spices
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-spicy">Spicy</span>
+                  <span class="tag tag-popular">Popular</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Paneer Tikka</h3>
+                <span class="item-price">₹199</span>
+              </div>
+              <p class="item-description">
+                Marinated cottage cheese cubes grilled with bell peppers and
+                onions in tandoor
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-veg">Veg</span>
+                  <span class="tag tag-spicy">Medium</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beverages Menu -->
+    <section class="section">
+      <div class="container">
+        <div class="menu-section">
+          <h2 class="category-title">Beverages</h2>
+          <div class="menu-grid">
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Masala Chai</h3>
+                <span class="item-price">₹39</span>
+              </div>
+              <p class="item-description">
+                Traditional Indian tea brewed with aromatic spices, cardamom, and
+                fresh milk
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-veg">Veg</span>
+                  <span class="tag tag-popular">Popular</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Mango Lassi</h3>
+                <span class="item-price">₹89</span>
+              </div>
+              <p class="item-description">
+                Creamy yogurt drink blended with fresh mango pulp and a touch of
+                cardamom
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-veg">Veg</span>
+                  <span class="tag tag-popular">Popular</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Fresh Lime Soda</h3>
+                <span class="item-price">₹59</span>
+              </div>
+              <p class="item-description">
+                Refreshing lime juice mixed with soda water, salt, and black
+                pepper
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-veg">Veg</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Filter Coffee</h3>
+                <span class="item-price">₹49</span>
+              </div>
+              <p class="item-description">
+                South Indian style coffee brewed with chicory and served with
+                hot milk
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-veg">Veg</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Buttermilk</h3>
+                <span class="item-price">₹45</span>
+              </div>
+              <p class="item-description">
+                Traditional spiced yogurt drink with curry leaves, ginger, and
+                cumin
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-veg">Veg</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="item-header">
+                <h3 class="item-title">Rose Milk</h3>
+                <span class="item-price">₹69</span>
+              </div>
+              <p class="item-description">
+                Chilled milk flavored with rose syrup and garnished with crushed
+                pistachios
+              </p>
+              <div class="item-footer">
+                <div class="item-tags">
+                  <span class="tag tag-veg">Veg</span>
+                  <span class="tag tag-new">New</span>
+                </div>
+                <button class="add-btn">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Restaurant Info -->
+          <div class="footer-section">
+            <h3>Restaurant Hours</h3>
+            <p>Monday - Thursday: 11:00 AM - 10:00 PM</p>
+            <p>Friday - Saturday: 11:00 AM - 11:00 PM</p>
+            <p>Sunday: 12:00 PM - 9:00 PM</p>
+            <h4>Delivery Zones</h4>
+            <p>Downtown, Midtown, Uptown</p>
+            <p>Free delivery on orders above ₹299</p>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <div class="contact-item">
+              <span class="contact-icon">📞</span>
+              <span>+1 (555) 123-4567</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">✉️</span>
+              <span>info@tastybite.com</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">📍</span>
+              <span>123 Spice Street, Curry City, CC 12345</span>
+            </div>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="footer-section">
+            <h3>Spice Rewards Program</h3>
+            <p>
+              Join our newsletter for exclusive offers and authentic recipes
+            </p>
+            <div class="newsletter-form">
+              <input
+                type="email"
+                class="newsletter-input"
+                placeholder="Enter your email"
+              />
+              <button class="newsletter-btn">Subscribe</button>
+            </div>
+            <div class="social-icons">
+              <div class="social-icon">📘</div>
+              <div class="social-icon">📷</div>
+              <div class="social-icon">🐦</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 TastyBite. All rights reserved. Bringing authentic
+            Indian flavors to your table.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
